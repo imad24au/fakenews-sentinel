@@ -122,9 +122,12 @@ Tested on 3 custom articles to validate beyond the training distribution:
 
 ---
 
-## Author
-** Md Imad Hossain **
+## 👤 Author
+
+**Md Imad Hossain**  
 🇦🇺 Sydney, Australia
-- 💼 [LinkedIn](<!-- TODO: Your LinkedIn URL or delete this line -->)
+- 💼 [LinkedIn](https://www.linkedin.com/in/imad-au-hossain/)
 - 🐙 [GitHub](https://github.com/imad24au)
-- 📧 [Email](mdimad.au.18@gmail.com)
+- 📧 [Email](mailto:imad.au.18@gmail.com)
+
+> *Aspiring ML Engineer focused on building deployable, interpretable AI systems. Currently sharpening skills in classical ML before tackling deep learning.*
