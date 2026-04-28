@@ -123,8 +123,8 @@ Tested on 3 custom articles to validate beyond the training distribution:
 ---
 
 ## Author
-**<!-- Md Imad Hossain -->**
+** Md Imad Hossain **
 🇦🇺 Sydney, Australia
 - 💼 [LinkedIn](<!-- TODO: Your LinkedIn URL or delete this line -->)
 - 🐙 [GitHub](https://github.com/imad24au)
-- 📧 [Email](mailto:<!-- mdimad.au.18@gmail.com -->)
+- 📧 [Email](mdimad.au.18@gmail.com)
