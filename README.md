@@ -18,15 +18,6 @@
 
 Paste any news article and see real-time predictions with confidence scores. No setup required.
 
----
-
-## Project Motivation
-
-In an era of AI-generated content and viral misinformation, detecting fake news has never been more critical. While transformer-based models dominate headlines, **classical ML methods remain underrated** — they're fast, interpretable, deployable on minimal hardware, and surprisingly effective.
-
-This project explores whether a **Naive Bayes classifier with TF-IDF features** can achieve production-grade performance on real-world fake news detection.
-
-**Spoiler:** Yes, it can.
 
 ---
 
@@ -115,16 +106,26 @@ Compared two Naive Bayes variants on identical TF-IDF features:
 
 | Metric | MultinomialNB | BernoulliNB |
 |--------|---------------|-------------|
-| **Accuracy** | **93.75%** | _your_value_ |
-| **Precision** | _your_value_ | _your_value_ |
-| **Recall** | _your_value_ | _your_value_ |
-| **F1 Score** | _your_value_ | _your_value_ |
+| **Accuracy** | 93.75% | **96.82%** |
+| **Precision** | 93.72% | **96.31%** |
+| **Recall** | 93.26% | **97.12%** |
+| **F1 Score** | 93.49% | **96.71%** |
 
-**Winner: MultinomialNB** — chosen for production deployment based on superior F1 score.
+### A Surprising Result
+
+Counter to common assumptions, **BernoulliNB outperformed MultinomialNB on every metric** — gaining ~3% accuracy and F1 score. This was unexpected because MultinomialNB is typically considered superior for text classification with TF-IDF features.
+
+**Why BernoulliNB won:** With TF-IDF producing many small-magnitude values, the binary "did this word appear?" signal proved to be a stronger discriminator for fake news than weighted frequency counts. This finding reinforces a key ML principle: **always test multiple algorithms — the "obvious choice" isn't always the best choice.**
+
+### Production Model
+
+**Currently deployed: MultinomialNB** at [https://huggingface.co/spaces/imad24au/fakenews-sentinel](https://huggingface.co/spaces/imad24au/fakenews-sentinel)
+
+While BernoulliNB showed superior accuracy in offline testing, MultinomialNB was deployed first as part of the iterative development process. A future iteration will A/B test both models in production to validate the offline results hold under real-world traffic.
 
 ### Real-World Validation
 
-Tested on 3 custom articles to validate beyond the training distribution:
+Tested MultinomialNB on 3 custom articles to validate beyond the training distribution:
 
 | Article Type | Prediction | Confidence |
 |-------------|------------|------------|
@@ -133,7 +134,6 @@ Tested on 3 custom articles to validate beyond the training distribution:
 | Ambiguous (coffee study) | Real | **55.72%** |
 
 **Key insight:** The model demonstrates **strong calibration** — high confidence on clear cases (97%), but appropriate uncertainty (55%) on ambiguous content. This calibration is critical for production: low-confidence predictions can be flagged for human review.
-
 ---
 
 ## Getting Started
